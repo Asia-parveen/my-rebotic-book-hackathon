@@ -1,0 +1,87 @@
+import React from 'react';
+import Layout from '@theme/Layout';
+import Link from '@docusaurus/Link';
+
+function ModuleCard({ title, summary, link }) {
+  return (
+    <div style={{
+      border: '1px solid rgba(0,0,0,0.08)',
+      borderRadius: 12,
+      padding: 20,
+      minWidth: 240,
+      maxWidth: 320,
+      boxShadow: '0 6px 18px rgba(0,0,0,0.06)',
+      background: 'white'
+    }}>
+      <h3 style={{ marginTop: 0 }}>{title}</h3>
+      <p style={{ marginBottom: 12 }}>{summary}</p>
+      <Link to={link} style={{
+        display: 'inline-block',
+        padding: '8px 14px',
+        borderRadius: 8,
+        textDecoration: 'none',
+        border: '1px solid #eee'
+      }}>
+        Open
+      </Link>
+    </div>
+  );
+}
+
+export default function Home() {
+  const cards = [
+    {
+      title: 'Module 1 — ROS 2 Fundamentals',
+      summary: 'Middleware (DDS), Nodes, Topics, Services — core concepts and examples.',
+      link: '/docs/module1-ros2/README'
+    },
+    {
+      title: 'Module 2 — Gazebo & Digital Twin',
+      summary: 'Introduction to simulation and digital twin pipelines (Gazebo / Unity).',
+      link: '/docs/module2-digital-twin/README'
+    },
+    {
+      title: 'Module 3 — NVIDIA Isaac & Isaac ROS',
+      summary: 'Simulation + Isaac ROS integrations and examples.',
+      link: '/docs/module3-nvidia-isaac/README'
+    },
+    {
+      title: 'Module 4 — Vision-Language-Action (VLA)',
+      summary: 'Vision and language integration for robot behaviour and action planning.',
+      link: '/docs/module4-vla/README'
+    }
+  ];
+
+  return (
+    <Layout title="Physical AI & Humanoid Robotics Book" description="A textbook for Physical AI and Humanoid Robotics.">
+      <main style={{ padding: '48px 20px', background: '#f6f7fb', minHeight: '80vh' }}>
+        <section style={{ maxWidth: 1100, margin: '0 auto', textAlign: 'center' }}>
+          <h1 style={{ margin: '0 0 12px', fontSize: '2.6rem' }}>Physical AI & Humanoid Robotics Book</h1>
+          <p style={{ margin: '0 0 28px', fontSize: '1.05rem', color: '#444' }}>
+            A hands-on textbook for learning ROS 2, simulation, perception, and robot control.
+          </p>
+
+          <div style={{
+            display: 'flex',
+            gap: 20,
+            justifyContent: 'center',
+            flexWrap: 'wrap',
+            marginTop: 18
+          }}>
+            {cards.map(card => (
+              <ModuleCard key={card.title} title={card.title} summary={card.summary} link={card.link} />
+            ))}
+          </div>
+
+          <div style={{ marginTop: 36 }}>
+            <Link to="/docs/module1-ros2/README" style={{
+              padding: '10px 16px', borderRadius: 8, textDecoration: 'none', border: '1px solid #ddd'
+            }}>
+              Start Module 1
+            </Link>
+          </div>
+        </section>
+      </main>
+    </Layout>
+  );
+}
