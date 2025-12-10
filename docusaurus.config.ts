@@ -72,6 +72,11 @@ const config: Config = {
     ],
   ],
 
+  plugins: [
+    // Chatbot plugin - adds the floating chat widget to all pages
+    './src/plugins/docusaurus-plugin-chatbot',
+  ],
+
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
